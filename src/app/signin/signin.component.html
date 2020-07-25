@@ -1,0 +1,11 @@
+<div class="row align-items-center" >
+	<div class="col-md-6 offset-md-3">
+		<form class="loginform" [formGroup]="loginForm" (ngSubmit)="submit()">
+			<label>Username:</label>
+			<input class="form-control" type="text" formControlName="username">
+			<label>Password:</label>
+			<input class="form-control" type="password" formControlName="password">
+			<button type="submit" class="btn btn-submit btn-md" [disabled]="!loginForm.valid">Submit</button>
+		</form>
+	</div>
+</div>
