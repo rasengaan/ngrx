@@ -18,6 +18,9 @@ export class SigninComponent implements OnInit {
 	state:loginstate={
 		loginstate:true  
 	}
+	logout:loginstate={
+		loginstate:false
+	}
 		loginForm:FormGroup;
 	ngOnInit(): void {
 		this.loginForm=new FormGroup({
@@ -29,8 +32,13 @@ export class SigninComponent implements OnInit {
 	submit(){
 		console.log("submitting")
 	//  CALLING ACTION TO CHANGE STATE OF LOGIN
-		this.store.dispatch(login({ loginstate:{loginstate:true} }));
-		
+	this.store.dispatch(login({ loginstate:{loginstate:true} }));
+	
+	this.store.select("logState").subscribe((data)=>{
+		console.log("subscription");
+		console.log(data);
+	});
+//	this.store.select()
 		//reaading from store
 		let tutorial = this.store.pipe(
 			//can change store variables here
@@ -42,7 +50,12 @@ export class SigninComponent implements OnInit {
 
 		console.log(this.store.select(map(sts =>{
 			console.log(sts)
-		})))
+		})));
+
+		console.log("changing state");
+		this.store.dispatch(logout({ loginstate:this.logout }));
+
+
 	}
 
 }

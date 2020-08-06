@@ -5,17 +5,13 @@ import { SigninComponent } from './signin/signin.component';
 
 const routes: Routes = [
   {
-    path:"signin",
-    component:SigninComponent
-  },
-  {
-    path:"**",
-    redirectTo:"signin"
+    path:"",
+    redirectTo:""
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
